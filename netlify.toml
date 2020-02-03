@@ -1,0 +1,4 @@
+[build]
+  base = "./"
+  publish = "./tic-tac-toe"
+  command = "echo 'hello netlify'"

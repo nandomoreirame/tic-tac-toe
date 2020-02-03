@@ -1,0 +1,24 @@
+{
+  "name": "tic-tac-toe",
+  "version": "0.1.0",
+  "description": "Tic Tac Toe - The Game",
+  "author": "Fernando Moreira <nandomoreira.me@gmail.com> (https://nandomoreira.dev/)",
+  "license": "MIT",
+  "main": "./tic-tac-toe/scripts.js",
+  "keywords": [
+    "game",
+    "tic-tac-toe",
+    "tic",
+    "tac",
+    "toe"
+  ],
+  "scripts": {
+    "dev": "browser-sync start --server ./tic-tac-toe --files ./tic-tac-toe",
+    "deploy": "netlify deploy --dir=tic-tac-toe --prod",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "netlify-cli": "^2.31.0"
+  }
+}
