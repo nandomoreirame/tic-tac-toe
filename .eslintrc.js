@@ -14,7 +14,8 @@ module.exports = {
     ecmaVersion: 2018,
   },
   rules: {
-    'implicit-arrow-linebreak': 'off'
-    'no-console': 'off'
+    'no-restricted-globals': 'off',
+    'implicit-arrow-linebreak': 'off',
+    'no-console': 'off',
   },
 };

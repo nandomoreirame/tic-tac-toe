@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Tic Tac Toe - The Game</title>
+  <meta name="description" content="A Tic Tac Toe - The Game">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Tic Tac Toe Game">
+  <link rel="apple-touch-icon" href="/icons/icon-152x152.png">
+  <meta name="theme-color" content="#2e4660" />
   <link rel="stylesheet" href="/styles.css">
   <script src="/scripts.js"></script>
 </head>
@@ -14,9 +21,20 @@
     <div class="game__credits">
       <h1>Tic Tac Toe - The Game</h1>
       <p>by <a href="https://nandomoreira.dev?ref=tic-tac-toe" target="_blank" rel="noopener noreferrer">nandomoreira.dev</a></p>
+      <p><img src="/pwa-logo.svg" width="200" alt="PWA"></p>
     </div>
   </div>
-
   <script>TicTacToe.init(document.getElementById('TicTacToe'));</script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').then((registration) => {
+          console.info('serviceWorker registered. ', registration.scope);
+        }, function(err) {
+          console.error('serviceWorker registration failed: ', err);
+        });
+      });
+    }
+  </script>
 </body>
 </html>
