@@ -16,7 +16,8 @@ window.TicTacToe = {
   isGameOver: false,
   isFirstMove: true,
   player: 'X',
-  restartButton: '<button role="button" class="game__button" onclick="TicTacToe.restart();">Restart game</button>',
+  restartButton: '<button role="button" class="game__button" onclick="TicTacToe.start();">Restart game</button>',
+  $feedbackElement: null,
 
   changePlayer() {
     this.player = this.player === 'X' ? 'O' : 'X';
@@ -34,8 +35,13 @@ window.TicTacToe = {
         .some((combination) => combination
           .every((moves) => currentPlayerMoves.indexOf(moves) !== -1));
 
-      if (this.isGameOver) this.end(`Player <strong>${this.player}</strong> is winner!!`);
+      if (this.isGameOver) this.end(`Player <strong>${this.player}</strong> is winner!`);
     }
+  },
+
+  checkIsDraw() {
+    const isDraw = this.boardCells.every((item) => item !== '');
+    if (isDraw) this.end('The game was a draw!');
   },
 
   play({ target }) {
@@ -49,28 +55,30 @@ window.TicTacToe = {
 
     this.draw();
     this.addPlayerMove(position);
+    this.checkIsDraw();
     this.checkIsGameOver();
     this.changePlayer();
   },
 
-  start() {
-    this.draw();
-  },
-
-  restart() {
+  reset() {
     this.player = 'X';
     this.isFirstMove = true;
     this.isGameOver = false;
     this.playersMoves = { O: [], X: [] };
     this.boardCells = this.boardCells.fill('');
-    document.querySelector('.game__over').remove();
+    this.$feedbackElement = document.querySelector('.game__over');
+    if (this.$feedbackElement) this.$feedbackElement.remove();
+  },
+
+  start() {
+    this.reset();
     this.draw();
   },
 
-  end(htmlMsg = '') {
+  end(htmlMsg) {
     const $elem = document.createElement('div');
     $elem.classList.add('game__over');
-    $elem.innerHTML = `<p>GAME OVER!<br/>${htmlMsg}<br/>${this.restartButton}</p>`;
+    $elem.innerHTML = `<p>${htmlMsg}<br/>${this.restartButton}</p>`;
     document.body.appendChild($elem);
   },
 
