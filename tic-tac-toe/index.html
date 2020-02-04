@@ -5,13 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Tic Tac Toe - The Game</title>
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/scripts.js"></script>
 </head>
 <body>
-  <h1>Tic Tac Toe - The Game</h1>
-  <p>by <a href="http://nandomoreira.dev" target="_blank" rel="noopener noreferrer">nandomoreira.dev</a></p>
+  <div class="game">
+    <div id="TicTacToe" class="game__board"></div>
+    <div class="game__credits">
+      <h1>Tic Tac Toe - The Game</h1>
+      <p>by <a href="https://nandomoreira.dev?ref=tic-tac-toe" target="_blank" rel="noopener noreferrer">nandomoreira.dev</a></p>
+    </div>
+  </div>
 
-  <script src="./scripts.js"></script>
-  <script>TicTacToe.init();</script>
+  <script>TicTacToe.init(document.getElementById('TicTacToe'));</script>
 </body>
 </html>
